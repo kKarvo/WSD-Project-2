@@ -1,0 +1,17 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Drill-and-practice application</h1>
+
+<p>This application provides the user with a list of topics which the user can then create multiple choice questions for.
+These questions may be answered, modified, and deleted by the user themselves or other users of the application.
+Furthermore, the applicaiton has a quiz mode in which the user chooses a topic they are interested in and the applicaiton fetches a random question from that topic.
+The user then is presented with the answer options and depending on the users' answer, feedback is provided.</p>
+<p>Additionally the application includes API functions. API GET requests are responded to with a random question and answeroptions form the database.
+API POST requests are responded to with the information that was the sent answer correct or not.</p>
+<ul>
+    <li>Topics: <%= it.tStats %></li>
+    <li>Questions: <%= it.qStats %></li>
+    <li>Answers: <%= it.aStats %></li>
+</ul>
+<a href="/auth/register">Register</a></br>
+<a href="/auth/login">Login</a>

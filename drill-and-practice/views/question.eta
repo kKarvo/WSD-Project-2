@@ -1,0 +1,33 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1><%= it.question.question_text%></h1>
+
+<form method="POST" action="/topics/<%=it.question.topic_id%>/questions/<%=it.question.id%>/options">
+    <textarea name="option_text"></textarea><br>
+    <input type="checkbox" name="is_correct">Is correct
+    <input type="submit" value="Add">
+</form>
+<% if (it.errors) { %>
+<ul>
+    <li>Error: <%= it.errors.text.required %></li>
+</ul>
+<% }; %>
+<h2>Options</h2>
+<% if (it.options && it.options.length > 0) { %>
+<ul>
+<% it.options.forEach((option) => { %>
+    <li>
+        Option content: <%=option.option_text%>
+        <br>Correctness: <%=option.is_correct%>
+        <form method="POST" action="/topics/<%=it.question.topic_id%>/questions/<%=it.question.id%>/options/<%=option.id%>/delete">
+            <input type="submit" value="Delete">
+        </form>
+    </li>
+<% }); %>
+</ul>
+<% } else { %>
+<p>No questions. Do you want to delete the question?</p>
+<form method="POST" action="/topics/<%=it.question.topic_id%>/questions/<%=it.question.id%>/delete">
+    <input type="submit" value="Delete question">
+</form>
+<% }; %>
