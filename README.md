@@ -40,4 +40,4 @@ The application includes e2e tests in the folder /e2e-playwright/tests. These
 can be run by opening the a terminal in the folder /project1 and entering the
 command `docker-compose run --entrypoint=npx e2e-playwright playwright test`. It
 should be noted that the tests are meant to be done on an empty database. The
-database can be reset by the command `docker-compose rm -sf`.
+docker containers including the database can be reset by the command `docker-compose rm -sf`.
